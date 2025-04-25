@@ -130,3 +130,18 @@ Imagine you receive periodic invoices via email in ZIP format. This flow automat
 ## Conclusion:
 
 This flow provides an easy and efficient way to handle email attachments, especially when dealing with ZIP files that need to be extracted and stored in OneDrive. By automating this process, you save time and ensure consistency in managing your email attachments.
+
+## Flow Diagram 2
+
+```mermaid
+graph TD
+  A[Start: New email arrives V3] --> B[Check if email has attachments]
+  B -->|Yes| C[Process each attachment]
+  C --> D[Update file in OneDrive]
+  D --> E{Was update successful?}
+  E -->|No| F[Create new file in OneDrive - Fresh Invoice Report]
+  F --> G[Extract ZIP file to folder in OneDrive]
+  G --> H[End]
+
+  E -->|Yes| H
+  B -->|No| H
