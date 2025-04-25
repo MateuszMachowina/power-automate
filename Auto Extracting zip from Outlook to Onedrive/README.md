@@ -4,59 +4,20 @@
 This flow automates the process of handling email attachments, specifically ZIP files. When a new email arrives with attachments, the flow updates or creates files in OneDrive and extracts the contents of the ZIP file.
 
 ---
+# Flow Diagram 
 
-## Flow Diagram
+```mermaid
+graph TD
+  A[Start: New email arrives V3] --> B[Check if email has attachments]
+  B -->|Yes| C[Process each attachment]
+  C --> D[Update ZIP file in OneDrive]
+  D --> E{Was update successful?}
+  E -->|No| F[Create new ZIP file in OneDrive]
+  F --> G[Extract ZIP file to folder in OneDrive]
+  G --> H[End]
 
-```
-+----------------------------------------------------------+
-|              When a new email arrives (V3)               |
-+----------------------------------------------------------+
-                            |
-                            v
-             +----------------------------------+
-             | Check if the email has attachments? |
-             +----------------------------------+
-                            |
-            +---------------+------------------+
-            |                                  |
-          Yes                                 No
-            |                                  |
-            v                                  v
-  +---------------------+             +----------------+
-  | For each attachment |             | Flow Ends      |
-  +---------------------+             +----------------+
-            |
-            v
-  +-------------------------+
-  | Update file in OneDrive |
-  +-------------------------+
-            |
-            v
-+---------------------------+
-| Was the update successful? |
-+---------------------------+
-            |
-  +---------+----------+
-  |                    |
-  No                   Yes
-  |                     |
-  v                     v
-+---------------------+  +-------------------+
-| Create a new file    |  | Flow Ends         |
-| "Fresh_Invoice_Report|  |                   |
-| .zip"                |  +-------------------+
-+---------------------+ 
-            |
-            v
-  +----------------------------+
-  | Extract ZIP file contents  |
-  | to folder in OneDrive      |
-  +----------------------------+
-            |
-            v
-     +-------------------+
-     | Flow Ends         |
-     +-------------------+
+  E -->|Yes| H
+  B -->|No| H
 ```
 
 ---
@@ -131,17 +92,57 @@ Imagine you receive periodic invoices via email in ZIP format. This flow automat
 
 This flow provides an easy and efficient way to handle email attachments, especially when dealing with ZIP files that need to be extracted and stored in OneDrive. By automating this process, you save time and ensure consistency in managing your email attachments.
 
-## Flow Diagram 2
 
-```mermaid
-graph TD
-  A[Start: New email arrives V3] --> B[Check if email has attachments]
-  B -->|Yes| C[Process each attachment]
-  C --> D[Update file in OneDrive]
-  D --> E{Was update successful?}
-  E -->|No| F[Create new file in OneDrive - Fresh Invoice Report]
-  F --> G[Extract ZIP file to folder in OneDrive]
-  G --> H[End]
+## Additionally, Flow Diagram v.2
 
-  E -->|Yes| H
-  B -->|No| H
+```
++----------------------------------------------------------+
+|              When a new email arrives (V3)               |
++----------------------------------------------------------+
+                            |
+                            v
+             +----------------------------------+
+             | Check if the email has attachments? |
+             +----------------------------------+
+                            |
+            +---------------+------------------+
+            |                                  |
+          Yes                                 No
+            |                                  |
+            v                                  v
+  +---------------------+             +----------------+
+  | For each attachment |             | Flow Ends      |
+  +---------------------+             +----------------+
+            |
+            v
+  +-------------------------+
+  | Update file in OneDrive |
+  +-------------------------+
+            |
+            v
++---------------------------+
+| Was the update successful? |
++---------------------------+
+            |
+  +---------+----------+
+  |                    |
+  No                   Yes
+  |                     |
+  v                     v
++---------------------+  +-------------------+
+| Create a new file    |  | Flow Ends         |
+| "Fresh_Invoice_Report|  |                   |
+| .zip"                |  +-------------------+
++---------------------+ 
+            |
+            v
+  +----------------------------+
+  | Extract ZIP file contents  |
+  | to folder in OneDrive      |
+  +----------------------------+
+            |
+            v
+     +-------------------+
+     | Flow Ends         |
+     +-------------------+
+```
