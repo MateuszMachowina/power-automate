@@ -4,7 +4,7 @@
 This Power Automate flow automates the process of handling email attachments, specifically ZIP files. When a new email arrives with attachments, the flow updates or creates files in OneDrive and extracts the contents of the ZIP file.
 
 ---
-# 📊 Flow Diagram 
+## 📊 Flow Diagram 
 
 ```mermaid
 graph TD
