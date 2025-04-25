@@ -2,6 +2,31 @@
 
 This Power Automate flow is designed to notify customers about overdue invoices by sending them a payment reminder email with an attached table of their outstanding invoices.
 
+# Flow Diagram
+
+```mermaid
+graph TB
+    A[Manual Trigger] --> B[List Rows in Table]
+    B --> C[Select All Emails]
+    C --> D[Get Unique Emails List]
+    D --> E[Parse Email Data into JSON]
+
+    E --> F[Apply to Each Single Email]
+    F --> G[Compose Current Email]
+    G --> H[Filter Excel Rows for Current Email]
+    H --> I[Create HTML Table for Current Email]
+    I --> J[Format HTML Table]
+    J --> K[Send Email V2]
+
+    %% Loop details
+    F --> G
+    G --> H
+    H --> I
+    I --> J
+    J --> K
+
+```
+
 ## Flow Steps
 
 ### 1. Trigger: **Manual Trigger**
@@ -45,11 +70,11 @@ This Power Automate flow is designed to notify customers about overdue invoices 
 ### 6. Action: **Apply to Each (Loop Over Each Email)**
 For each email address in the list, perform the following actions:
 
-#### a. **Compose - Each Single Email**
+#### a. **Compose - Current Email**
 - **Inputs**: `items('Apply_to_each')['Email']`
 - This step composes the email for each individual customer.
 
-#### b. **Filter - Rows for Current Email**
+#### b. **Filter - Excel Rows for Current Email**
 - **From**: `outputs('List_rows_present_in_a_table')?['body/value']`
 - **Filter Query**: `item()?['Email'] is equal to outputs('Compose_-_Each_Single_Email')`
 - Filters the rows from the Excel table for the current email address.
@@ -147,19 +172,4 @@ For each email address in the list, perform the following actions:
 
 By following these steps, you will have a flow set up that automatically sends payment reminders to customers with overdue invoices.
 
-# Flow Diagram
-
-```mermaid
-graph TB
-    A[Manual Trigger] --> B[List Rows in Table]
-    B --> C[Select All Emails]
-    C --> D[Get Unique Emails List]
-    D --> E[Parse Email Data to JSON]
-    E --> F[Loop Over Emails]
-    F --> G[Process Each Email]
-    G --> H[Filter Rows by Email]
-    H --> I[Create HTML Table]
-    I --> J[Format HTML Table]
-    J --> K[Send Email]
-```
 
