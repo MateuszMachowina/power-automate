@@ -1,4 +1,4 @@
-# 💳 Customer Overdue Payment Notifier
+# 📨 Customer Overdue Payment Notifier 💳
 
 This Power Automate flow is designed to notify customers about overdue invoices by sending them a payment reminder email with an attached table of their outstanding invoices.
 
@@ -141,7 +141,7 @@ For each email address in the list, perform the following actions:
 
 ---
 
-## ⚙️ Setup Instructions
+## 🛠️ Setup Instructions
 
 1. **Import the Flow**:
    - Download the `.zip` package containing the flow definition.
