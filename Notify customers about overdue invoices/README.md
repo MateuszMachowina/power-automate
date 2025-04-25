@@ -1,22 +1,22 @@
-# Power Automate Flow: Notify Customers About Overdue Invoices
+# 💳 Customer Overdue Payment Notifier
 
 This Power Automate flow is designed to notify customers about overdue invoices by sending them a payment reminder email with an attached table of their outstanding invoices.
 
-# Flow Diagram
+## 📊 Flow Diagram
 
 ```mermaid
 graph TB
-    A[Manual Trigger] --> B[List Rows in Table]
-    B --> C[Select All Emails]
-    C --> D[Get Unique Emails List]
-    D --> E[Parse Email Data into JSON]
+    A[🔔 Manual Trigger] --> B[📋 List Rows in Table]
+    B --> C[📧 Select All Emails]
+    C --> D[🔑 Get Unique Emails List]
+    D --> E[📂 Parse Email Data into JSON]
 
-    E --> F[Apply to Each Single Email]
-    F --> G[Compose Current Email]
-    G --> H[Filter Excel Rows for Current Email]
-    H --> I[Create HTML Table for Current Email]
-    I --> J[Format HTML Table]
-    J --> K[Send Email V2]
+    E --> F[🔄 Apply to Each Single Email]
+    F --> G[✉️ Compose Current Email]
+    G --> H[🔍 Filter Excel Rows for Current Email]
+    H --> I[💻 Create HTML Table for Current Email]
+    I --> J[🎨 Format HTML Table]
+    J --> K[📤 Send Email V2]
 
     %% Loop details
     F --> G
@@ -24,10 +24,9 @@ graph TB
     H --> I
     I --> J
     J --> K
-
 ```
 
-## Flow Steps
+## 📝 Flow Steps
 
 ### 1. Trigger: **Manual Trigger**
 - The flow is manually triggered by a button in Power Automate.
@@ -142,7 +141,7 @@ For each email address in the list, perform the following actions:
 
 ---
 
-## Setup Instructions
+## ⚙️ Setup Instructions
 
 1. **Import the Flow**:
    - Download the `.zip` package containing the flow definition.
@@ -164,7 +163,7 @@ For each email address in the list, perform the following actions:
 
 ---
 
-## Notes
+## 📋 Notes
 - Ensure that the Excel file structure and column names match the flow's expectations.
 - Modify the HTML table formatting to suit your needs for email presentation.
 
