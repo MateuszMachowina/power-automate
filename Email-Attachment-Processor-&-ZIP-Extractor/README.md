@@ -16,7 +16,7 @@ graph TD
   F --> G[📂 Extract ZIP file to folder in OneDrive]
   G --> H[🏁 End]
 
-  E -->|✔️ Yes| H
+  E -->|✔️ Yes| G
   B -->|❌ No| H
 ```
 
